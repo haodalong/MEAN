@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="stylesheets/bootstrap.css" />
+		<link rel="stylesheet" href="stylesheets/dashboard.css" />
+	</head>
+	<body ng-app="myApp">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Reports</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Export</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Nav item</a></li>
+            <li><a href="">Nav item again</a></li>
+            <li><a href="">One more nav</a></li>
+            <li><a href="">Another nav item</a></li>
+            <li><a href="">More navigation</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Nav item again</a></li>
+            <li><a href="">One more nav</a></li>
+            <li><a href="">Another nav item</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Dashboard</h1>
+
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-6 placeholder">
+	            <video width="400" height="300" controls>
+		            <source src="video/example.mp4" type="video/mp4"  />
+		            <!-- 一共支持三种格式： Ogg、MPEG4、WebM -->
+		            Your browser does not support the <code>video</code> element.
+		        </video>
+	            <h4>郭德纲调戏主持人</h4>
+	            <span class="text-muted"></span>
+            </div>
+            <div class="col-xs-6 col-sm-6 placeholder">
+	            <video  width="400" height="300" controls>
+		            <source src="video/example2.mp4"  type="video/mp4"  />
+		            <!-- fallback -->
+		            Your browser does not support the <code>video</code> element.
+		        </video>
+	            <h4>郭德纲调戏主持人</h4>
+	            <span class="text-muted"></span>
+            </div>
+          </div>
+
+          <h2 class="sub-header">联系人信息
+          	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          	<input placeholder="输入身份证号码进行查询" ng-model="condID"  />
+          	<button type="button" class="btn btn-primary" style="float: right;" data-toggle="modal" data-target="#exampleModal">新增联系人</button>
+          </h2>
+          <div class="table-responsive" ng-controller="ctrl01">
+          	
+          	<!--会话框开始-->
+          	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="closeUpdate();"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+			      </div>
+			      <div class="modal-body">
+			        <form>
+			          <div class="form-group">
+			          	<label for="user-id" class="control-label">身份证号码</label>
+			            <input type="text" class="form-control"  ng-model="user.card_id">
+			            <label for="user-name" class="control-label">姓名:</label>
+			            <input type="text" class="form-control"  ng-model="user.name">
+			            <label for="user-phone" class="control-label">电话:</label>
+			            <input type="text" class="form-control" ng-model="user.phone">
+			            <label for="user-birthday" class="control-label">生日:</label>
+			            <input type="text" class="form-control" ng-model="user.birthday">
+			            <label for="message-text" class="control-label">简介:</label>
+			            <textarea class="form-control" id="message-text" ng-model="user.description" rows="3" cols="40" style="resize:none;"></textarea>
+			          </div>
+			        </form>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeUpdate();">关闭</button>
+			        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="updateUser(user);">保存</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+          	<!--会话框结束-->
+          	
+          	
+          	
+          	
+            <table  class="table table-striped">
+              <thead>
+                <tr>
+                  <th>身份证号码</th>
+				  <th>姓名</th>
+				  <th>电话</th>
+                  <th>生日</th>
+                  <th>操作1</th>
+                  <th>操作2</th>
+                </tr>
+              </thead>
+              <tbody>
+              	<!--
+                  	描述：directives
+                  -->
+              	<tr ng-repeat="user in users |filter:{card_id:condID}">
+					<td>{{user.card_id}}</td>
+					<td>{{user.name}}</td>
+					<td>{{user.phone}}</td>
+					<!--<td>{{$index}}</td>-->
+					<td>{{user.birthday}}</td>
+					<td><button type="button" class="btn btn-default" ng-click="delUser($index,user.card_id);">删除</button></td>
+					<td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModal" data-user="{{user}}" ng-click="editUser($index);">修改</button></td>
+					<!--<td><button type="button" class="btn btn-default" ng-click="editUser($index);">修改</button></td>-->
+				</tr>
+              </tbody>
+              	
+            </table>
+            <!--<p>名字：<input type="name" ng-model="user.name"></p>-->
+          </div>
+        </div>
+      </div>
+    </div>
+		
+		
+		
+		
+		
+
+
+		
+		
+		<!--ng-click="updateUser($index,	);"-->
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</body>
+	
+	<script type="text/javascript" src="javascripts/angular.js" ></script>
+	<script type="text/javascript" src="javascripts/crud_app.js" ></script>
+	<script type="text/javascript" src="javascripts/jquery-1.12.3.js" ></script>
+	<script type="text/javascript" src="javascripts/bootstrap.js" ></script>
+	<script type="text/javascript" src="javascripts/crud-JQuery.js" ></script>
+</html>
